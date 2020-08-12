@@ -19,13 +19,13 @@ function App() {
         <AudioPlayerContainer />
         </div>
         <div class="row">
-          <h5>Test Space:</h5>
+          <h5>Test Space: Login.js</h5>
         </div>
         <div>
           <Login />
         </div>
         <div class="row">
-          <h5>Test Space:</h5>
+          <h5>Test Space: Lab.js</h5>
         </div>
         <div>
           <Lab />
