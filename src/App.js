@@ -4,6 +4,8 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import MonstersContainer from './Containers/MonstersContainer';
 import AudioPlayerContainer from './Containers/AudioPlayerContainer';
+import Login from './Components/Login';
+import Lab from './Components/Lab';
 
 function App() {
   return (
@@ -15,6 +17,18 @@ function App() {
         </div>
         <div class="row">
         <AudioPlayerContainer />
+        </div>
+        <div class="row">
+          <h5>Test Space:</h5>
+        </div>
+        <div>
+          <Login />
+        </div>
+        <div class="row">
+          <h5>Test Space:</h5>
+        </div>
+        <div>
+          <Lab />
         </div>
       </div>
     </div>
