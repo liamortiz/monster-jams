@@ -9,8 +9,14 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <MonstersContainer />
-      <AudioPlayerContainer />
+      <div class="ui middle vertically divided aligned centered grid">
+        <div class="row">
+        <MonstersContainer />
+        </div>
+        <div class="row">
+        <AudioPlayerContainer />
+        </div>
+      </div>
     </div>
   );
 }

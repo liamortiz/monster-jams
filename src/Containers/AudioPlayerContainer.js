@@ -6,6 +6,9 @@ class AudioPlayerContainer extends React.Component {
         return (  
             <div>
                 <h3>AudioPlayer Container</h3>
+                <button class="circular ui icon button">
+                    <i class="play icon"></i>
+                </button>
             </div>
         );
     }
