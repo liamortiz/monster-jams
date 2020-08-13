@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
-    state = {  }
     render() { 
         return (  
             // <div class="ui inverted segment">
@@ -9,24 +9,24 @@ class Navbar extends React.Component {
                 <div class="ui inverted borderless large blue menu">
 
                     <a class="active item">
-                        <h3>Home</h3>
+                    <Link to="/" className="link">Home</Link>
+                        {/* <h3>Home</h3> */}
                     </a>
 
-                        {/* <Link to="/" className="link">Home</Link> */}
-  
                     <a class="item">
-                        <h3>Lab</h3>
-                    </a>
+                    <Link to="/lab" className="link">Lab</Link>
 
-                        {/* <Link to="/lab" className="link">Lab</Link> */}
+                        {/* <h3>Lab</h3> */}
+                    </a>
 
                 <div class="right menu">
 
                     <a class="item">
-                        <h3>Login</h3>
+                    <Link to="/login" className="link" >Login</Link>
+
+                        {/* <h3>Login</h3> */}
                     </a>
 
-                        {/* <Link to="/login" className="link" >Login</Link> */}
                 </div>
                 </div>
             // </div>

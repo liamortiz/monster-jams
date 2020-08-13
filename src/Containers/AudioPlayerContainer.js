@@ -16,5 +16,5 @@ class AudioPlayerContainer extends React.Component {
         );
     }
 }
- 
+
 export default AudioPlayerContainer;

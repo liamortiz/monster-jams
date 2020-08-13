@@ -1,32 +1,53 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
-import MonstersContainer from './Containers/MonstersContainer';
 import AudioPlayerContainer from './Containers/AudioPlayerContainer';
-import Login from './Components/Login';
 import Lab from './Components/Lab';
+import Login from './Components/Login';
+import MonstersContainer from './Containers/MonstersContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    
     <Router>
-            <React.Fragment>
-<Switch>
+    <React.Fragment>
+      <Switch>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={AudioPlayerContainer} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/lab" component={Lab} />
+        </div>
+        <div className="ui footer">
+          Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+        </div>
+      </Switch>
+    </React.Fragment>
+    </Router>
+  );
+};
 
-    <div className="App">
-      <Navbar />
-      <div class="ui middle vertically divided aligned centered grid">
-        <div class="row"><br></br><br></br>
-        <MonstersContainer />
-        </div>
-        <div class="row">
-        <AudioPlayerContainer />
-        </div>
-        <div class="row">
-          <h5>Test Space: Login.js</h5><br></br><br></br>
-        </div>
+export default App;
+
+// <div className="footer">
+// <p></p><br></br><p></p><br></br>
+// </div>
+
+
+    // <div className="App">
+    //   <Navbar />
+    //   <div class="ui middle vertically divided aligned centered grid">
+    //     <div class="row"><br></br><br></br>
+    //     <MonstersContainer />
+    //     </div>
+    //     <div class="row">
+    //     <AudioPlayerContainer />
+    //     </div>
+    //     <div class="row">
+    //       <h5>Test Space: Login.js</h5><br></br><br></br>
+        {/* </div>
         <div>
           <Login />
         </div>
@@ -35,12 +56,12 @@ function App() {
         </div>
         <div>
           <Lab />
-        </div>
+        </div> */}
 
 
-        <Route exact path="/" component= {AudioPlayerContainer} />
+        {/* <Route exact path="/" component= {AudioPlayerContainer} />
         <Route exact path="/login" component= {Login} />
-        <Route exact path="/:id" component= {Lab} />
+        <Route exact path="/:id" component= {Lab} /> */}
 
         
         {/* <div class="row">
@@ -66,17 +87,17 @@ function App() {
       
       
 
-      </div>
-      <div className="footer">
-         Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
-         <p></p><br></br><p></p><br></br>
-      </div>
-      </div>
-      </Switch>
-      </React.Fragment>
-      </Router>
+      // </div>
+//       <div className="footer">
+//          Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+//          <p></p><br></br><p></p><br></br>
+//       </div>
+//       </div>
+//       </Switch>
+//       </React.Fragment>
+//       </Router>
       
-  );
-}
+//   );
+// }
 
-export default App;
+// export default App;
