@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
-import AudioPlayerContainer from './Containers/AudioPlayerContainer';
+import Home from './Containers/Home';
 import Lab from './Components/Lab';
 import Login from './Components/Login';
 import MonstersContainer from './Containers/MonstersContainer';
@@ -16,12 +16,12 @@ const App = () => {
       <Switch>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={AudioPlayerContainer} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/lab" component={Lab} />
-        </div>
         <div className="ui footer">
-          Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+            Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+        </div>
         </div>
       </Switch>
     </React.Fragment>
@@ -43,7 +43,7 @@ export default App;
     //     <MonstersContainer />
     //     </div>
     //     <div class="row">
-    //     <AudioPlayerContainer />
+    //     <Home />
     //     </div>
     //     <div class="row">
     //       <h5>Test Space: Login.js</h5><br></br><br></br>
@@ -59,7 +59,7 @@ export default App;
         </div> */}
 
 
-        {/* <Route exact path="/" component= {AudioPlayerContainer} />
+        {/* <Route exact path="/" component= {Home} />
         <Route exact path="/login" component= {Login} />
         <Route exact path="/:id" component= {Lab} /> */}
 
