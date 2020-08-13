@@ -6,9 +6,15 @@ import MonstersContainer from './Containers/MonstersContainer';
 import AudioPlayerContainer from './Containers/AudioPlayerContainer';
 import Login from './Components/Login';
 import Lab from './Components/Lab';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
+    
+    <Router>
+            <React.Fragment>
+<Switch>
+
     <div className="App">
       <Navbar />
       <div class="ui middle vertically divided aligned centered grid">
@@ -32,7 +38,9 @@ function App() {
         </div>
 
 
-
+        <Route exact path="/" component= {AudioPlayerContainer} />
+        <Route exact path="/login" component= {Login} />
+        <Route exact path="/:id" component= {Lab} />
 
         
         {/* <div class="row">
@@ -64,6 +72,10 @@ function App() {
          <p></p><br></br><p></p><br></br>
       </div>
       </div>
+      </Switch>
+      </React.Fragment>
+      </Router>
+      
   );
 }
 
