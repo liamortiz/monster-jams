@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
 import Lab from './Components/Lab';
+import Playlist from './Components/Playlist';
 import Login from './Components/Login';
 import MonstersContainer from './Containers/MonstersContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -16,7 +17,7 @@ const App = () => {
       <Switch>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Playlist} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/lab" component={Lab} />
         <div className="ui footer">

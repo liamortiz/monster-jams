@@ -31,13 +31,6 @@ class Home extends React.Component {
 
 
 
-
-
-
-
-
-
-
 <div class="ui segment">
                 <h3>AudioPlayer Container</h3>
                 <button class="circular ui icon button">
