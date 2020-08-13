@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Navbar />
       <div class="ui middle vertically divided aligned centered grid">
-        <div class="row">
+        <div class="row"><br></br><br></br>
         <MonstersContainer />
         </div>
         <div class="row">
@@ -57,12 +57,13 @@ function App() {
       
       
       
-      
-      
-      
-      
+
       </div>
-    </div>
+      <div className="footer">
+         Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+         <p></p><br></br><p></p><br></br>
+      </div>
+      </div>
   );
 }
 

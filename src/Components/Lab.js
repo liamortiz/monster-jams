@@ -30,7 +30,7 @@ class Lab extends React.Component {
           <div class="item" data-value="2">Choice 2</div>
         </div>
 </div>
-
+<p></p><br></br><p></p><br></br><p></p><br></br>
 
           </div>
         </div>  

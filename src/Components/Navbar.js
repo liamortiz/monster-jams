@@ -5,16 +5,17 @@ class Navbar extends React.Component {
     render() { 
         return (  
             // <div class="ui inverted segment">
-                <div class="ui inverted borderless large menu">
+                // <div class="ui inverted borderless large menu">
+                <div class="ui inverted borderless large blue menu">
 
                     <a class="active item">
-                        Home
+                        <h3>Home</h3>
                     </a>
 
                         {/* <Link to="/" className="link">Home</Link> */}
   
                     <a class="item">
-                        Lab
+                        <h3>Lab</h3>
                     </a>
 
                         {/* <Link to="/lab" className="link">Lab</Link> */}
@@ -22,7 +23,7 @@ class Navbar extends React.Component {
                 <div class="right menu">
 
                     <a class="item">
-                        Login
+                        <h3>Login</h3>
                     </a>
 
                         {/* <Link to="/login" className="link" >Login</Link> */}
