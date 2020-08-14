@@ -16,14 +16,13 @@
   cursor: pointer;
   opacity: 0.6;
 }
-
 #playlist {
-  border: 1px solid gray;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
-  width: 30rem;
+  width: 60rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 auto;
+  margin: 2em auto;
 }
 
 .App-logo {

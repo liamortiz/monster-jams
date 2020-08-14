@@ -1,13 +1,13 @@
 import React from 'react';
 import soundData from '../sounds.json';
-import { Synth } from "tone";
+import { MonoSynth } from "tone";
 
 class Playlist extends React.Component {
 
     constructor(props) {
         super(props);
         this.sounds = soundData["tropical"]
-        this.synth = new Synth().toDestination();
+        this.synth = new MonoSynth().toDestination();
         this.musicNodes = [];
         this.activeNodes = [];
 
@@ -18,7 +18,7 @@ class Playlist extends React.Component {
     }
     createMusicNodes() {
         for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 6; j++) {
+            for (let j = 0; j < 12; j++) {
                 if (!this.musicNodes[i]) {
                     this.musicNodes[i] = [];
                 }
@@ -37,23 +37,36 @@ class Playlist extends React.Component {
         return nodes;
     }
 
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
     handleClick = (node) => {
         node.active = !node.active
         if (node.active) {
-            this.synth.triggerAttackRelease(node.sound, "8n");
+            this.synth.triggerAttackRelease(node.sound, "50n");
         }
 
         this.forceUpdate();
     }
 
-    play() {
-        for (const nodeArr of this.musicNodes) {
-            for (const node of nodeArr) {
-                if (node.active) {
-                    //console.log(node.pos);
-                    //this.synth.triggerAttackRelease(node.sound, "8n", node.pos * 2); This explodes.
-                }
+    async play() {
+        for (let i = 0; i < 12; i++) {
+            const n1 = this.musicNodes[0][i];
+            const n2 = this.musicNodes[1][i];
+            const n3 = this.musicNodes[2][i];
+
+            if (n1.active) {
+                this.synth.triggerAttackRelease(n1.sound, "50n");
             }
+            if (n2.active) {
+                this.synth.triggerAttackRelease(n2.sound, "50n");
+            }
+            if (n3.active) {
+                this.synth.triggerAttackRelease(n3.sound, "50n");
+            }
+
+            await this.sleep(300)
         }
     }
 
