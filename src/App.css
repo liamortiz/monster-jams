@@ -1,29 +1,28 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .App {
   text-align: center;
+}
+
+.active {
+  background-color: red !important;
+}
+.node {
+  width: 1.7rem;
+  height: 1.7rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  margin: 1em 1.5em 1em 1.5em;
+}
+.node:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+#playlist {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: 60rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2em auto;
 }
 
 .App-logo {

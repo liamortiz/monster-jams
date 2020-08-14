@@ -5,10 +5,12 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
 import Lab from './Components/Lab';
+import Playlist from './Components/Playlist';
 import Login from './Components/Login';
 import MonstersContainer from './Containers/MonstersContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+<<<<<<< HEAD
 const API_Monsters = [
   {
     id: 1,
@@ -72,6 +74,27 @@ class App extends React.Component {
   ); 
   };
 }; 
+=======
+const App = () => {
+  return (
+    <Router>
+    <React.Fragment>
+      <Switch>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Playlist} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/lab" component={Lab} />
+        <div className="ui footer">
+            Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+        </div>
+        </div>
+      </Switch>
+    </React.Fragment>
+    </Router>
+  );
+};
+>>>>>>> 69ec198534adc8a6db8f12ed819b11e9118869e8
 
 export default App;
 
