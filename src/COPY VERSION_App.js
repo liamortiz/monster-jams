@@ -9,68 +9,24 @@ import Login from './Components/Login';
 import MonstersContainer from './Containers/MonstersContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-const API_Monsters = [
-  {
-    id: 1,
-    name: "Monster 1"
-  },
-  {
-    id: 2,
-    name: "Monster 2"
-  },
-  {
-    id: 3,
-    name: "Monster 3"
-  }
-]
-
-const API_Playlists = [
-  {
-    id: 1,
-    title: "Playlist 1"
-  },
-  {
-    id: 2,
-    title: "Playlist 2"
-  },
-  {
-    id: 3,
-    title: "Playlist 3"
-  }
-]
-
-class App extends React.Component {
-  state = {
-    monsters: API_Monsters,
-    playlists: API_Playlists
-  }
-
-  // componentDidMount(){
-  //   fetch(API_Monsters)
-  //       .then(res => res.json())
-  //       .then(monsters => this.setState({ monsters }))
-  // }
-
-  render() {
-    console.log(this.state.monsters)
-    return (
-      <Router>
-      <React.Fragment>
-        <Switch>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" render={() => Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/lab" render={() => <Lab monsters={this.state.monsters}/>}/>
-          <div className="ui footer">
-              Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
-          </div>
-          </div>
-        </Switch>
-      </React.Fragment>
-      </Router>
-  ); 
-  };
+const App = () => {
+  return (
+    <Router>
+    <React.Fragment>
+      <Switch>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/lab" component={Lab} />
+        <div className="ui footer">
+            Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
+        </div>
+        </div>
+      </Switch>
+    </React.Fragment>
+    </Router>
+  );
 }; 
 
 export default App;
