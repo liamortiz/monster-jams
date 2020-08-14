@@ -25,6 +25,19 @@
   margin: 2em auto;
 }
 
+#monster-wrapper {
+  width: 50rem;
+  height: 30rem;
+  border: 1px solid gray;
+  margin: 1em auto;
+}
+
+#monster-wrapper img {
+  margin: 5em 3em;
+  width: 10rem;
+  height: 10rem;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

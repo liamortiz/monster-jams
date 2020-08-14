@@ -5,76 +5,10 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
 import Lab from './Components/Lab';
-import Playlist from './Components/Playlist';
 import Login from './Components/Login';
 import MonstersContainer from './Containers/MonstersContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-<<<<<<< HEAD
-const API_Monsters = [
-  {
-    id: 1,
-    name: "Monster 1"
-  },
-  {
-    id: 2,
-    name: "Monster 2"
-  },
-  {
-    id: 3,
-    name: "Monster 3"
-  }
-]
-
-const API_Playlists = [
-  {
-    id: 1,
-    title: "Playlist 1"
-  },
-  {
-    id: 2,
-    title: "Playlist 2"
-  },
-  {
-    id: 3,
-    title: "Playlist 3"
-  }
-]
-
-class App extends React.Component {
-  state = {
-    monsters: API_Monsters,
-    playlists: API_Playlists
-  }
-
-  // componentDidMount(){
-  //   fetch(API_Monsters)
-  //       .then(res => res.json())
-  //       .then(monsters => this.setState({ monsters }))
-  // }
-
-  render() {
-    console.log(this.state.monsters)
-    return (
-      <Router>
-      <React.Fragment>
-        <Switch>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" render={() => Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/lab" render={() => <Lab monsters={this.state.monsters}/>}/>
-          <div className="ui footer">
-              Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
-          </div>
-          </div>
-        </Switch>
-      </React.Fragment>
-      </Router>
-  ); 
-  };
-}; 
-=======
 const App = () => {
   return (
     <Router>
@@ -82,7 +16,7 @@ const App = () => {
       <Switch>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Playlist} />
+          <Route exact path="/" component={MonstersContainer} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/lab" component={Lab} />
         <div className="ui footer">
@@ -94,7 +28,6 @@ const App = () => {
     </Router>
   );
 };
->>>>>>> 69ec198534adc8a6db8f12ed819b11e9118869e8
 
 export default App;
 

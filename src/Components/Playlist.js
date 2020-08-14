@@ -1,37 +1,47 @@
 import React from 'react';
-import soundData from '../sounds.json';
 import { MonoSynth } from "tone";
 
 class Playlist extends React.Component {
 
     constructor(props) {
         super(props);
-        this.sounds = soundData["tropical"]
         this.synth = new MonoSynth().toDestination();
         this.musicNodes = [];
         this.activeNodes = [];
 
-        this.createMusicNodes();
-        this.getMusicNodes();
-
         this.play = this.play.bind(this);
     }
+
+    componentDidMount() {
+        this.createMusicNodes();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.sounds !== this.props.sounds) {
+            this.createMusicNodes();
+        }
+    }
+
     createMusicNodes() {
+        if (this.props.sounds.length === 0) return;
+
+        this.musicNodes = []
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 12; j++) {
                 if (!this.musicNodes[i]) {
                     this.musicNodes[i] = [];
                 }
-                this.musicNodes[i].push({active: false, sound: this.sounds[i], pos: j})
+                this.musicNodes[i].push({active: false, sound: this.props.sounds[i], pos: j})
             }
         }
+        this.forceUpdate();
     }
 
     getMusicNodes() {
         let nodes = []
         for (const nodeArr of this.musicNodes) {
-            for (const node of nodeArr) {
-                nodes.push(<div className = {`node ${node.active ? " active" : ""}`} onClick={() => {this.handleClick(node)}} ></div>)
+            for (const [index, node] of nodeArr.entries()) {
+                nodes.push(<div key = {`${index}:${node.sound}`} className = {`node ${node.active ? " active" : ""}`} onClick={() => {this.handleClick(node)}} ></div>)
             }
         }
         return nodes;
@@ -39,7 +49,7 @@ class Playlist extends React.Component {
 
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-      }
+    }
 
     handleClick = (node) => {
         node.active = !node.active
@@ -57,13 +67,13 @@ class Playlist extends React.Component {
             const n3 = this.musicNodes[2][i];
 
             if (n1.active) {
-                this.synth.triggerAttackRelease(n1.sound, "50n");
+                this.synth.triggerAttackRelease(n1.sound, "80n");
             }
             if (n2.active) {
-                this.synth.triggerAttackRelease(n2.sound, "50n");
+                this.synth.triggerAttackRelease(n2.sound, "80n");
             }
             if (n3.active) {
-                this.synth.triggerAttackRelease(n3.sound, "50n");
+                this.synth.triggerAttackRelease(n3.sound, "80n");
             }
 
             await this.sleep(300)
@@ -72,12 +82,12 @@ class Playlist extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 <button onClick = {this.play}>Play</button>
                 <div id = "playlist">
-                {this.getMusicNodes()}
+                    {this.getMusicNodes()}
                 </div>
-            </React.Fragment>
+            </>
         )
     }
 }
