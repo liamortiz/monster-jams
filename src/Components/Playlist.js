@@ -1,11 +1,11 @@
 import React from 'react';
-import { MonoSynth } from "tone";
+import { MembraneSynth } from "tone";
 
 class Playlist extends React.Component {
 
     constructor(props) {
         super(props);
-        this.synth = new MonoSynth().toDestination();
+        this.synth = new MembraneSynth().toDestination();
         this.musicNodes = [];
         this.activeNodes = [];
 

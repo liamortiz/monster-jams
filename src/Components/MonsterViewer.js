@@ -9,7 +9,7 @@ class MonsterViewer extends React.Component {
 
         this.currentSet = 0;
         this.monsters = ['beans', 'potato', 'squids', 'bubble']
-        this.sounds = [['C1', 'A1', 'B2'], ['A4', 'C4', 'B5']]
+        this.sounds = [['A1', 'B1', 'C1'], ['A2', 'C2', 'B2']]
     }
     componentDidMount() {
         this.setMonsters();
