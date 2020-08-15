@@ -38,6 +38,11 @@
   height: 10rem;
 }
 
+.save-btn {
+  font-size: 50%;
+  margin-left: 1em;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

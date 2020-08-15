@@ -51,7 +51,7 @@ class MonsterViewer extends React.Component {
     render() {
         return (
             <div id = "monster-wrapper">
-                <h1>Sample Band</h1>
+                <h1>Sample Band <button className = "save-btn">Save</button></h1>
                 <button name = "left" onClick = {this.handleClick}>Left</button>
                 {this.state.currentMonsters}
                 <button name = "right" onClick = {this.handleClick}>Right</button>
