@@ -83,7 +83,10 @@ class Playlist extends React.Component {
     render() {
         return (
             <>
-                <button onClick = {this.play}>Play</button>
+                <button className = "ui labeled icon button" onClick = {this.play}>
+                    <i className = "play icon"></i>
+                    Play
+                </button>
                 <div id = "playlist">
                     {this.getMusicNodes()}
                 </div>
