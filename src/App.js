@@ -6,7 +6,6 @@ import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
 import Lab from './Components/Lab';
 import Login from './Components/Login';
-import MonstersContainer from './Containers/MonstersContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -16,7 +15,7 @@ const App = () => {
       <Switch>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={MonstersContainer} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/lab" component={Lab} />
         <div className="ui footer">
