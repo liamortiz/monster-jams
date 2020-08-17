@@ -1,5 +1,6 @@
 import React from 'react';
 import Monster from './Monster';
+import Playlists from './Playlists';
 import { Link } from 'react-router-dom';
 
 class MonsterViewer extends React.Component {
@@ -49,12 +50,16 @@ class MonsterViewer extends React.Component {
         this.setMonsters();
     }
 
+    handleSaveClick = () => {
+
+    }
+
     render() {
         return (
             <div id = "monster-wrapper">
                 <div>
                     <h1>Sample Band</h1>
-                    <Link to="/playlists"><button className = "save-btn ui orange mini button">Save</button></Link>
+                    <Link to="/playlists"><button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button></Link>
                 </div>
                 <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>
                 {this.state.currentMonsters}
