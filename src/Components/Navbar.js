@@ -6,6 +6,7 @@ class Navbar extends React.Component {
         return (  
             // <div class="ui inverted segment">
                 // <div class="ui inverted borderless large menu">
+                <div class="navbar">
                 <div class="ui inverted borderless large blue menu">
 
                     <a class="active item">
@@ -27,6 +28,7 @@ class Navbar extends React.Component {
                         {/* <h3>Login</h3> */}
                     </a>
 
+                </div>
                 </div>
                 </div>
             // </div>

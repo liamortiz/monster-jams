@@ -6,7 +6,7 @@ class Home extends React.Component {
     state = {
       currentSound: []
     }
-
+  
     changeSounds = (sounds) => {
       this.setState({
         currentSound: sounds

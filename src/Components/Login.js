@@ -1,27 +1,121 @@
 import React from 'react';  
+import Footer from './Footer';
 
 class Login extends React.Component {
-    state = {  }
+    state = {  
+        username: "",
+        password: "",
+        nameNew: "",
+        usernameNew: "",
+        passwordNew: "",
+        confirmpasswordNew: ""
+    }
+
+    handleChange = e => {
+        this.setState(
+            {[e.target.name] : e.target.value},
+            console.log(this.state)
+        )
+    }
+
+    handleLoginSubmit = e => {
+        e.preventDefault()
+        console.log("User logs in and should be directed back to homepage")
+        // this.props.changeView("home")
+    }
+
+    handleSignUpSubmit = e => {
+        e.preventDefault()
+        console.log("User signs up and should be directed back to homepage")
+        // this.props.changeView("home")
+    }
+
     render() { 
         return (  
-            <div class="ui form">
-                <form action="#">
+            <>
+<div class="ui segment">
+<div class="ui two column very relaxed grid">
+<div class="column">
+
+
+
+
+                <div class="ui form" onSubmit={this.handleLoginSubmit}>
+                    <form action="#">
+                    <h2 style={{ color: 'green' }}>Login</h2>
                 <div class="text-input">
-                    {/* <label for="username">Username</label> */}
-                    <input type="text" name="username" id="username" placeholder="Username" />
+                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange} id="username" placeholder="Username" style={{width: "250px"}}/>
                     <span class="separator"> </span><br></br><br></br>
                 </div>   
                 <div class="text-input">
-                    {/* <label for="password">Password</label> */}
-                    <input type="password" name="password" id="password" placeholder="Password" />
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} id="password" placeholder="Password" style={{width: "250px"}}/>
                     <span class="separator"> </span><br></br><br></br>
                 </div>  
                 <div class="form-bottom">
-                    <input type="submit" id="submit" value="Login" class="ui blue button" /><p></p>
-                    <span>New to Monster Jams? </span><a href="https://hub.docker.com/login/" class="original-src">Create an Account</a><br></br><br></br><br></br><br></br>
+                    <input type="submit" id="submit" value="Login" class="ui green button" style={{width: "150px"}}/><p></p>
                 </div>
                 </form>  
             </div>
+        {/* </div> */}
+
+</div>
+
+<div class="column">
+
+
+{/* <div class="ui centered row">
+<div class="ui centered column"> */}
+
+  {/* <div class="ui floated segment"> */}
+
+  <div class="ui form" onSubmit={this.handleSignUpSubmit}>
+                    <form action="#">
+                    <h2 style={{ color: 'green' }}>Sign Up</h2>
+                    <div class="text-input">
+                    <input type="text" name="nameNew" value={this.state.nameNew} onChange={this.handleChange} id="name" placeholder="Name" style={{width: "250px"}}/>
+                    <span class="separator"> </span><br></br><br></br>
+                </div>
+                
+                <div class="text-input">
+                    <input type="text" name="usernameNew" value={this.state.usernameNew} onChange={this.handleChange} id="username" placeholder="Username" style={{width: "250px"}}/>
+                    <span class="separator"> </span><br></br><br></br>
+                </div>   
+                <div class="text-input">
+                    <input type="password" name="passwordNew" value={this.state.passwordNew} onChange={this.handleChange} id="password" placeholder="Password" style={{width: "250px"}}/>
+                    <span class="separator"> </span><br></br><br></br>
+                </div>
+                <div class="text-input">
+                    <input type="password" name="confirmpasswordNew" value={this.state.confirmpasswordNew} onChange={this.handleChange} id="confirmpassword" placeholder="Confirm Password" style={{width: "250px"}}/>
+                    <span class="separator"> </span><br></br><br></br>
+                </div>  
+                <div class="form-bottom">
+                    <input type="submit" id="submit" value="Create Account" class="ui green button" style={{width: "150px"}}/><p></p>
+                </div>
+                </form>  
+  </div>
+
+{/* </div> */}
+
+
+</div>
+
+
+<div class="ui vertical divider">
+    <h3>or</h3>
+  </div>
+
+</div>
+<Footer />
+</div>
+
+
+{/* </div> */}
+
+</>
+
+
+
+            
         );
     }
 }

@@ -6,9 +6,12 @@ import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
 import Lab from './Components/Lab';
 import Login from './Components/Login';
+import Footer from './Components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-const App = () => {
+class App extends React.Component {
+
+  render(){
   return (
     <Router>
     <React.Fragment>
@@ -18,15 +21,14 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/lab" component={Lab} />
-        <div className="ui footer">
-            Copyright © {new Date().toISOString().substring(0, 4)} | Liam & Julian Co.
-        </div>
         </div>
       </Switch>
+      <Footer/>
     </React.Fragment>
     </Router>
   );
 };
+}
 
 export default App;
 

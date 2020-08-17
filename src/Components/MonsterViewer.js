@@ -52,9 +52,9 @@ class MonsterViewer extends React.Component {
         return (
             <div id = "monster-wrapper">
                 <h1>Sample Band <button className = "save-btn positive ui button">Save</button></h1>
-                <button className = "ui left floated button" name = "left" onClick = {this.handleClick}>Left</button>
+                <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>
                 {this.state.currentMonsters}
-                <button className = "ui right floated button" name = "right" onClick = {this.handleClick}>Right</button>
+                <button className = "circular ui positive icon basic button" name = "right" onClick = {this.handleClick}><i class="right arrow icon"></i></button>
             </div>
         )
     }
