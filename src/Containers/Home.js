@@ -17,7 +17,7 @@ class Home extends React.Component {
       console.log(this.props.homeView)
         return ( 
           <div id = "monster-band">
-            <MonsterViewer changeSounds = {this.changeSounds} homeView={this.props.homeView} changeHomeView={this.props.changeHomeView}/>
+            <MonsterViewer changeSounds = {this.changeSounds} />
             <Playlist sounds={this.state.currentSound} />
           </div>
           

@@ -8,37 +8,19 @@ import Playlists from './Components/Playlists';
 import Login from './Components/Login';
 import Footer from './Components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { RouteProps } from "react-router";
 
 class App extends React.Component {
-  state = {
-    homeView: true
-  }
-
-  changeHomeView = e => {
-    e.preventDefault()
-    this.setState({homeView: !this.state.homeView})
-  }
-
-  renderPlaylists = () => {
-    return(
-    <Playlists />
-    )
-  }
 
   render(){
-    console.log("After user clicks 'Save' button:", this.state.homeView)
   return (
     <Router>
     <React.Fragment>
       <Switch>
         <div className="App">
           <Navbar />
-          {this.state.homeView === true
-          ? <Route exact path="/" render={(routeProps) => (<Home {...routeProps} homeView={this.state.homeView} changeHomeView={this.changeHomeView}/>)} /> 
-          : this.renderPlaylists()}
-          <Route exact path="/playlists" render={(routeProps) => (<Playlists {...routeProps} homeView={this.state.homeView} changeHomeView={this.changeHomeView}/>)} /> 
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/playlists" component={Playlists} />
         </div>
       </Switch>
       <Footer/>
