@@ -1,8 +1,11 @@
 import React from 'react';
 import Monster from './Monster';
 import { Link } from 'react-router-dom';
+import EditBand from './EditBand'
 
 class Playlists extends React.Component {
+
+
 
     constructor(props) {
         super(props);
@@ -25,13 +28,37 @@ class Playlists extends React.Component {
         this.setState({ currentMonsters: newMonsters })
     }
 
+    handleDelete = (name) => {
+      fetch(// API, 
+        { 
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
+      })
+      .then(r => r.json())
+      .then(() => {
+        let newArr = this.state.monsters.filter(monster => monster.name !== name)
+        this.setState({monsters: newArr})
+      })
+    }
+
     render() {
       console.log(this.monsters)
         return (
 <div>
+<p></p>
+<h2 style={{ color: 'green' }}>My Monsters</h2>
+
 <div class="ui horizontal segments">
-                {this.monsters.map((monsterName, index) => <Monster key={index} name={monsterName}/>)}
+
+                {this.monsters.map((monsterName, index) => <Monster key={index} name={monsterName} handleDelete={this.handleDelete} />)}
                 </div>
+                <div className="edit-band">
+                  <p></p>
+    <EditBand />
+  </div>
 </div>
 
 

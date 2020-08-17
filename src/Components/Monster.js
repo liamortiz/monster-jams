@@ -3,6 +3,9 @@ import React from 'react';
 const monsterImages = require.context('../images/');
 
 class Monster extends React.Component {
+
+
+
     render() {
       console.log(this.props.name)
         return (
@@ -10,7 +13,7 @@ class Monster extends React.Component {
 
 <div class="ui segment">
 
-    <div class="ui card">
+    <div class="ui mini card">
   <div class="image">
     <div class="ui dimmer">
 <div class="content">
@@ -30,7 +33,7 @@ class Monster extends React.Component {
   </div>
   <div class="extra content">
     <button style={{width: "90px"}} class="ui left floated mini green button">Edit</button>
-    <button style={{width: "90px"}} class="ui right floated mini red button">Delete</button>
+    <button style={{width: "90px"}} class="ui right floated mini red button" onClick={() => this.props.handleDelete(this.props.name)}>Delete</button>
   </div>
 
 </div>
