@@ -1,7 +1,8 @@
 import React from 'react';
 import Monster from './Monster';
-import Playlists from './Playlists';
 import { Link } from 'react-router-dom';
+
+const monsterImages = require.context('../images/');
 
 class MonsterViewer extends React.Component {
 
@@ -23,7 +24,7 @@ class MonsterViewer extends React.Component {
         
         this.monsters.slice(this.currentSet * 2, (this.currentSet * 2) + 2)
             .map((monsterName, index) => {
-                newMonsters.push(<Monster key = {index} name = {monsterName} />)
+                newMonsters.push(<img src = {monsterImages(`./${monsterName}.svg`)} alt = "" />)
             })
         
         this.setState({ currentMonsters: newMonsters })
@@ -58,12 +59,12 @@ class MonsterViewer extends React.Component {
         return (
             <div id = "monster-wrapper">
                 <div>
-                    <h1>Sample Band</h1>
+                    <h1><input placeholder = "Sample Band"/></h1>
                     <Link to="/playlists"><button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button></Link>
                 </div>
                 <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>
-                {this.state.currentMonsters}
-                <button className = "circular ui positive icon basic button" name = "right" onClick = {this.handleClick}><i onClick = {this.handleClick} class="right arrow icon"></i></button>
+                    {this.state.currentMonsters}
+                <button className = "circular ui positive icon basic button" name = "right" onClick = {this.handleClick}><i class="right arrow icon"></i></button>
             </div>
         )
     }

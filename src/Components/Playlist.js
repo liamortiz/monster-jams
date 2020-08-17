@@ -5,6 +5,8 @@ class Playlist extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {playing: false}
         this.synth = new MembraneSynth().toDestination();
         this.musicNodes = [];
         this.activeNodes = [];
@@ -61,6 +63,7 @@ class Playlist extends React.Component {
     }
 
     async play() {
+        this.setState({playing: true})
         for (let i = 0; i < 12; i++) {
             const n1 = this.musicNodes[0][i];
             const n2 = this.musicNodes[1][i];
@@ -78,13 +81,14 @@ class Playlist extends React.Component {
 
             await this.sleep(300)
         }
+    this.setState({playing: false})
     }
 
     render() {
         return (
             <>
                 <button className = "ui labeled icon button" onClick = {this.play}>
-                    <i className = "play icon"></i>
+                    <i className = {`${this.state.playing ? 'pause' : 'play'} icon`}></i>
                     Play
                 </button>
                 <div id = "playlist">

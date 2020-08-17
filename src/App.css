@@ -50,6 +50,15 @@
   border: 1px solid gray;
   margin: 1em auto;
 }
+#monster-wrapper input {
+  width: 100%;
+  color: gray;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-indent: 1em;
+}
+#monster-wrapper input:focus{
+  outline: none;
+}
 
 #monster-wrapper img {
   margin: 5em 3em;
