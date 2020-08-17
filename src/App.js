@@ -4,23 +4,41 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
-import Lab from './Components/Lab';
+import Playlists from './Components/Playlists';
 import Login from './Components/Login';
 import Footer from './Components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { RouteProps } from "react-router";
 
 class App extends React.Component {
+  state = {
+    homeView: true
+  }
+
+  changeHomeView = e => {
+    e.preventDefault()
+    this.setState({homeView: !this.state.homeView})
+  }
+
+  renderPlaylists = () => {
+    return(
+    <Playlists />
+    )
+  }
 
   render(){
+    console.log("After user clicks 'Save' button:", this.state.homeView)
   return (
     <Router>
     <React.Fragment>
       <Switch>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Home} />
+          {this.state.homeView === true
+          ? <Route exact path="/" render={(routeProps) => (<Home {...routeProps} homeView={this.state.homeView} changeHomeView={this.changeHomeView}/>)} /> 
+          : this.renderPlaylists()}
+          <Route exact path="/playlists" render={(routeProps) => (<Playlists {...routeProps} homeView={this.state.homeView} changeHomeView={this.changeHomeView}/>)} /> 
           <Route exact path="/login" component={Login} />
-          <Route exact path="/lab" component={Lab} />
         </div>
       </Switch>
       <Footer/>
@@ -53,16 +71,16 @@ export default App;
           <Login />
         </div>
         <div class="row">
-          <h5>Test Space: Lab.js</h5><br></br><br></br>
+          <h5>Test Space: Playlists.js</h5><br></br><br></br>
         </div>
         <div>
-          <Lab />
+          <Playlists />
         </div> */}
 
 
         {/* <Route exact path="/" component= {Home} />
         <Route exact path="/login" component= {Login} />
-        <Route exact path="/:id" component= {Lab} /> */}
+        <Route exact path="/:id" component= {Playlists} /> */}
 
         
         {/* <div class="row">

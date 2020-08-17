@@ -1,7 +1,7 @@
 import React from 'react';
 import Monster from './Monster';
 
-class Lab extends React.Component {
+class Playlists extends React.Component {
     // state = {  
     //   homeView: false
     // }
@@ -13,7 +13,7 @@ class Lab extends React.Component {
     }
 
     render() { 
-      // console.log(this.props.monsters)
+      console.log(this.props.homeView)
         return(
 <>
           
@@ -160,4 +160,4 @@ class Lab extends React.Component {
     }
 }
  
-export default Lab;
+export default Playlists;
