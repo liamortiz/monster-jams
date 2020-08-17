@@ -2,16 +2,25 @@ import React from 'react';
 import Monster from './Monster';
 
 class Lab extends React.Component {
-    state = {  }
+    // state = {  
+    //   homeView: false
+    // }
+
+
+    handleClick = (e) => {
+      // this.setState({homeView: !this.state.homeView})
+      console.log("User clicks 'Monster Jam!' button and should be redirected to homepage.")
+    }
+
     render() { 
-      console.log(this.props.monsters)
+      // console.log(this.props.monsters)
         return(
 <>
           
 
 
           
-          
+{/*           
 
 <div class="ui segment">
   <div class="ui three row very relaxed grid">
@@ -33,17 +42,17 @@ class Lab extends React.Component {
       <p></p>
       <p></p>
     </div>
-  </div>
-  <div class="ui horizontal divider">
+  </div> */}
+  {/* <div class="ui horizontal divider">
     and
-  </div>
+  </div> */}
 
 
 
 <div class="ui grid container">
             
           <div class="ui form">
-          {this.props.monsters.map(monster => <Monster key={monster.id} monster={monster}/>)}
+          {/* {this.props.monsters.map(monster => <Monster key={monster.id} monster={monster}/>)} */}
         <div class="two fields">
           </div>
 
@@ -65,7 +74,7 @@ class Lab extends React.Component {
 
 
 
-<h3>Step 1: Build a Band</h3>
+<h2 style={{ color: 'blue' }}>Step 1: Build a Band</h2>
 
   <div class="field">
             <label>Select First Monster By ID</label>
@@ -95,7 +104,7 @@ class Lab extends React.Component {
 
 
 
-      <h3>Step 2: Pick a Playlist</h3>
+      <h2 style={{ color: 'blue' }}>Step 2: Pick a Playlist</h2>
 
 
           <div class="field">
@@ -117,8 +126,12 @@ class Lab extends React.Component {
     </div>
 
 
+    <h2 style={{ color: 'blue' }}>Step 3: </h2> 
 
+<button onclick={this.handleClick} class="ui orange large button">Monster Jam!</button>
+<h3> After clicking "Monster Jam!" button, user will be directed back to homepage with updated/selected band & playlist. </h3>
 
+{/* toggleView */}
 
 
 

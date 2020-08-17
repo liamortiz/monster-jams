@@ -9,7 +9,7 @@ class Navbar extends React.Component {
                 <div class="navbar">
                 <div class="ui inverted borderless large blue menu">
 
-                    <a class="active item">
+                    <a class="item">
                     <Link to="/" className="link">Home</Link>
                         {/* <h3>Home</h3> */}
                     </a>
