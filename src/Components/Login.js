@@ -13,15 +13,22 @@ class Login extends React.Component {
 
     handleChange = e => {
         this.setState(
-            {[e.target.name] : e.target.value},
-            console.log(this.state)
+            {[e.target.name] : e.target.value}
         )
     }
 
     handleLoginSubmit = e => {
         e.preventDefault()
-        console.log("User logs in and should be directed back to homepage")
-        // this.props.changeView("home")
+        fetch('http://localhost:8080/auth', {
+            method: 'POST',
+            headers: {accepts: 'application/json', 'Content-Type' : 'application/json'},
+            body: JSON.stringify({user: {username: this.state.username, password: this.state.password}})
+
+        }).then(resp => 
+            resp.json()
+            ).then(data => {
+            console.log(data);
+        })
     }
 
     handleSignUpSubmit = e => {
