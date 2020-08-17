@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
-import Lab from './Components/Lab';
+import Playlists from './Components/Playlists';
 import Login from './Components/Login';
 import Footer from './Components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -20,7 +20,7 @@ class App extends React.Component {
           <Navbar />
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/lab" component={Lab} />
+          <Route exact path="/playlists" component={Playlists} />
         </div>
       </Switch>
       <Footer/>
@@ -53,16 +53,16 @@ export default App;
           <Login />
         </div>
         <div class="row">
-          <h5>Test Space: Lab.js</h5><br></br><br></br>
+          <h5>Test Space: Playlists.js</h5><br></br><br></br>
         </div>
         <div>
-          <Lab />
+          <Playlists />
         </div> */}
 
 
         {/* <Route exact path="/" component= {Home} />
         <Route exact path="/login" component= {Login} />
-        <Route exact path="/:id" component= {Lab} /> */}
+        <Route exact path="/:id" component= {Playlists} /> */}
 
         
         {/* <div class="row">
