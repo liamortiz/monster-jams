@@ -1,6 +1,7 @@
 import React from 'react';
+import EditBand from '../Components/EditBand';
+import Band from '../Components/Band';
 import Playlist from '../Components/Playlist';
-import MonsterViewer from '../Components/MonsterViewer';
 
 class Home extends React.Component {
     state = {
@@ -14,10 +15,9 @@ class Home extends React.Component {
     }
 
     render() { 
-      console.log(this.props.homeView)
         return ( 
           <div id = "monster-band">
-            <MonsterViewer changeSounds = {this.changeSounds} />
+            <Band changeSounds = {this.changeSounds} />
             <Playlist sounds={this.state.currentSound} />
           </div>
           

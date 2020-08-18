@@ -3,13 +3,25 @@ import Monster from './Monster';
 import { Link } from 'react-router-dom';
 import EditBand from './EditBand'
 
+const API_Bands = [
+  {
+    id: 1,
+    name: "Band A"
+  },
+  {
+    id: 2,
+    name: "Band B"
+  } 
+]
+
 class Playlists extends React.Component {
-
-
-
+  
     constructor(props) {
         super(props);
-        this.state = {currentMonsters: []}
+        this.state = {
+          currentMonsters: [],
+          bands: API_Bands
+        }
 
         this.currentSet = 0;
         this.monsters = ['beans', 'potato', 'squids', 'bubble']
@@ -46,6 +58,7 @@ class Playlists extends React.Component {
 
     render() {
       console.log(this.monsters)
+      console.log(this.state.bands)
         return (
 <div>
 <p></p>
