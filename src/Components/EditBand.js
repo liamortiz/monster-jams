@@ -3,17 +3,22 @@ import React from 'react';
 class EditBand extends React.Component {
 
     render() { 
+        console.log(this.props.bandX)
         return (  
             <div>
-                <form class="ui form">
+                <div className="form-row">
                     <h2 style={{ color: 'green' }}>Edit Your Band</h2>
-                    <input style={{width: "250px"}} type="text" placeholder="Band Name"></input><br></br><br></br>
-                    <button class="ui mini yellow button" type="submit">Submit Changes</button>
-                </form>
+                    <div className="col-5">
+                        <input type="text" className="form-control" placeholder={this.props.bandX.name} name="editBand" value={this.props.bandX.name} onChange={this.props.handleEditChange} style={{width: "250px"}} ></input><br></br><br></br>
+                    </div>
+                    <div className="col">
+                        <button type="submit" className="btn btn-success" onClick={this.props.handleEditSubmit}>Submit Changes</button>
+                    </div>          
+                </div>
             </div>
         );
-    }
-}
+    };
+};
  
 export default EditBand;
 

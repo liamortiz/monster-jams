@@ -1,94 +1,124 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'tone';
 import Monster from './Monster';
 import EditBand from './EditBand';
+import { Link } from 'react-router-dom';
 
-const monsterImages = require.context('../images/');
 const TEST_API_BANDS = [
-    {
-      id: 1,
-      name: "Band A"
-    },
-    {
-      id: 2,
-      name: "Band B"
-    },
-    {
-       id: 3,
-       name: "Band C"
-    } 
-  ]
+  {
+    id: 1,
+    name: "Band A"
+  },
+  {
+    id: 2,
+    name: "Band B"
+  },
+  {
+     id: 3,
+     name: "Band C"
+  } 
+]
 
 class Band extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentMonsters: [], 
-            bands: TEST_API_BANDS
-        }
+  state = {
+    bands: TEST_API_BANDS,
+    editBand: "",
+    name: ""
+  }
 
-        this.currentSet = 0;
-        this.monsters = ['beans', 'potato', 'squids', 'bubble']
-        this.sounds = [['A1', 'B1', 'C1'], ['A2', 'C2', 'B2']]
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       currentMonsters: []
+    //     }
 
-    componentDidMount() {
-        this.setMonsters();
-    }
+    //     this.currentSet = 0;
+    //     this.monsters = ['beans', 'potato', 'squids', 'bubble']
+    //     this.sounds = [['A1', 'B1', 'C1'], ['A2', 'C2', 'B2']]
+    // }
+    // componentDidMount() {
+    //   console.log(this.state)
+    //     this.setMonsters();
+    // }
 
-    setMonsters() {
-        const newMonsters = [];
-        this.props.changeSounds(this.sounds[this.currentSet]);
-        
-        this.monsters.slice(this.currentSet * 2, (this.currentSet * 2) + 2)
-            .map((monsterName, index) => {
-                newMonsters.push(<img src = {monsterImages(`./${monsterName}.svg`)} alt = "" />)
-            })
-        
-        this.setState({ currentMonsters: newMonsters })
-    }
+    // setMonsters() {
+    //     const newMonsters = [];        
+    //     this.monsters.map((monsterName, index) => {
+    //       newMonsters.push(<Monster key = {index} name = {monsterName} />)
+    //     })
+    //     this.setState({ currentMonsters: newMonsters })
+    // }
 
-    handleClick = (event) => {
-        const direction = event.target.name;
-        switch (direction) {
-            case 'left':
-                this.currentSet--;
-                if (this.currentSet < 0) {
-                    this.currentSet = 0;
-                }
-                break;
-            case 'right':
-                this.currentSet++;
-                if (this.currentSet > (this.monsters.length / 2) - 1) {
-                    this.currentSet = (this.monsters.length / 2) - 1;
-                }
-                break;
-            default:
-                break;
-        }
-        this.setMonsters();
-    }
+    // handleDelete = (name) => {
+    //   fetch(// API, 
+    //     { 
+    //     method: "DELETE",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json"
+    //     }
+    //   })
+    //   .then(r => r.json())
+    //   .then(() => {
+    //     let newArr = this.state.monsters.filter(monster => monster.name !== name)
+    //     this.setState({monsters: newArr})
+    //   })
+    // }
 
-    handleSaveClick = () => {
+    handleEditClick = (id) => {
+      console.log("ID of Band being edited:", id)
+      let newArr = [...this.state.bands]
+      let bandX = newArr.find(obj => obj.id === id)
+      this.setState({editBand: bandX})
+    };
 
-    }
+    handleEditChange = (e) => {
+      console.log("Band Editing in progress.. ")
+      this.setState({[e.target.name]: e.target.value})
+    };
+
+    handleEditSubmit = (e) => {
+      console.log("HandleEditSubmit")
+      // e.preventDefault()
+      // fetch(//`??/${this.state.editBand.id}`, 
+      // {
+      //   method: "PATCH",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json"
+      //   }, 
+      //   body: JSON.stringify({
+      //     name: this.state.name
+      //   })})
+      //   .then(r => r.json())
+      //   .then(updatedBandObject => {
+      //     let newArray = [...this.state.bands]
+      //     let updatedBand = newArray.find(obj => obj.id === updatedBandObject.id)
+      //     this.setState({bands: newArray})
+      //     this.setState({
+      //       editBand: "",
+      //       name: ""
+      //     })
+      //   })
+    };
 
     render() {
-        console.log(this.state.bands)
-        console.log(this.state.currentMonsters)
+      console.log(this.state.editBand)
         return (
-            <div id = "monster-wrapper">
-                <div>
-                    <h1><input placeholder = "Sample Band"/></h1>
-                    <Link to="/playlists"><button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button></Link>
-                </div>
-                <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>
-                    {this.state.currentMonsters}
-                <button className = "circular ui positive icon basic button" name = "right" onClick = {this.handleClick}><i class="right arrow icon"></i></button>
+          <div>
+          <p></p>
+            <h2 style={{ color: 'green' }}>My Bands</h2>
+            <div class="ui horizontal segments">
+              {this.state.bands.map(band => <Monster editBand={this.handleEditClick} band={band} />)}
             </div>
-        )
-    }
-}
+            <div className="edit-band">
+            <p></p>
+              <EditBand bandX={this.state.editBand} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
+            </div>
+          </div>
+        );
+    };
+};
+
 export default Band;
+

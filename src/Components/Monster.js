@@ -4,45 +4,36 @@ const monsterImages = require.context('../images/');
 
 class Monster extends React.Component {
 
-
-
     render() {
-      console.log(this.props.name)
         return (
           <>
-
-<div class="ui segment">
-
-    <div class="ui mini card">
-  <div class="image">
-    <div class="ui dimmer">
-<div class="content">
-  <div class="center">
-    <div class="ui inverted button">Add Friend</div>
-  </div>
-</div>
-    </div>
-    <img src = {monsterImages(`./${this.props.name}.svg`)} alt = "" />
-  </div>
-  <div class="content">
-    <div class="header">{this.props.name}</div>
-    <div class="meta">
-<a class="group">BAND NAME</a>
-    </div>
-    <div class="description">Hi, my name is {`${this.props.name}`}..</div>
-  </div>
-  <div class="extra content">
-    <button style={{width: "90px"}} class="ui left floated mini green button">Edit</button>
-    <button style={{width: "90px"}} class="ui right floated mini red button" onClick={() => this.props.handleDelete(this.props.name)}>Delete</button>
-  </div>
-
-</div>
-</div>
-
-
-          
+            <div class="ui segment">
+              <div class="ui mini card">
+                <div class="image">
+                  <div class="ui dimmer">
+                    <div class="content">
+                      <div class="center">
+                      </div>
+                    </div>
+                  </div>
+                  <h1>{this.props.band.name}</h1>
+                </div>
+                <div class="content">
+                  <div class="header">{this.props.name}</div>
+                  <div class="meta">
+                    <a class="group">Band ID: {this.props.band.id}</a>
+                  </div>
+                  <div class="description">Hi, we're "{`${this.props.band.name}`}".</div>
+                </div>
+                <div class="extra content">
+                  <button style={{width: "90px"}} class="ui left floated mini green button" onClick={() => this.props.editBand(this.props.band.id)}>Edit</button>
+                  <button style={{width: "90px"}} class="ui right floated mini red button" onClick={() => this.props.handleDelete(this.props.band.id)}>Delete</button>
+                </div>
+              </div>
+            </div>
           </>
         );
     };
 };
+
 export default Monster;

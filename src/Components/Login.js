@@ -78,10 +78,10 @@ class Login extends React.Component {
   <div class="ui form" onSubmit={this.handleSignUpSubmit}>
                     <form action="#">
                     <h2 style={{ color: 'green' }}>Sign Up</h2>
-                    <div class="text-input">
-                    <input type="text" name="nameNew" value={this.state.nameNew} onChange={this.handleChange} id="name" placeholder="Name" style={{width: "250px"}}/>
-                    <span class="separator"> </span><br></br><br></br>
-                </div>
+                    {/* <div class="text-input"> */}
+                    {/* <input type="text" name="nameNew" value={this.state.nameNew} onChange={this.handleChange} id="name" placeholder="Name" style={{width: "250px"}}/> */}
+                    {/* <span class="separator"> </span><br></br><br></br> */}
+                {/* </div> */}
                 
                 <div class="text-input">
                     <input type="text" name="usernameNew" value={this.state.usernameNew} onChange={this.handleChange} id="username" placeholder="Username" style={{width: "250px"}}/>

@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Containers/Home';
-import Playlists from './Components/Playlists';
+import Band from './Components/Band';
 import Login from './Components/Login';
 import Footer from './Components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -20,7 +20,7 @@ class App extends React.Component {
           <Navbar />
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/playlists" component={Playlists} />
+          <Route exact path="/playlists" component={Band} />
         </div>
       </Switch>
       <Footer/>
