@@ -17,12 +17,8 @@ class App extends React.Component {
   setLogin = (data) => {
     console.log(data);
     this.setState({
-      logged_in: true
+      logged_in: !this.state.logged_in
     })
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.logged_in);
   }
 
   render(){
@@ -31,16 +27,18 @@ class App extends React.Component {
       <React.Fragment>
         <Switch>
           <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Home} />
-      
-
-            <Route path = '/login' render={(props) => (
-              <Login {...props} setLogin={this.setLogin} />
+            <Navbar logged_in={this.state.logged_in}/>
+            <Route exact path = '/' render={(props) => (
+              <Home {...props} logged_in={this.state.logged_in} />
             )}
             />
 
-            <Route exact path="/playlists">
+            <Route path = '/login' render={(props) => (
+              <Login {...props} setLogin={this.setLogin}/>
+            )}
+            />
+
+            <Route path="/playlists">
               {this.state.logged_in ? <Band/> : <Redirect to="/login" />}
             </Route>
           </div>

@@ -14,7 +14,7 @@ class Navbar extends React.Component {
                     </a>
                     <div class="right menu">
                         <a class="item">
-                            <Link to="/login" className="link" >Login</Link>
+                            <Link to="/login" className="link" >{this.props.logged_in ? "Logout" : "Login"}</Link>
                         </a>
                     </div>
                 </div>

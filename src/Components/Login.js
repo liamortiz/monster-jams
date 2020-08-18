@@ -28,6 +28,7 @@ class Login extends React.Component {
             resp.json()
             ).then(data => {
                 this.props.setLogin(data)
+                //this.forceUpdate();
         })
     }
 
@@ -49,7 +50,7 @@ class Login extends React.Component {
 
                 <div class="ui form" onSubmit={this.handleLoginSubmit}>
                     <form action="#">
-                    <h2 style={{ color: 'green' }}>Login</h2>
+        <h2 style={{ color: 'green' }}>Login</h2>
                 <div class="text-input">
                     <input type="text" name="username" value={this.state.username} onChange={this.handleChange} id="username" placeholder="Username" style={{width: "250px"}}/>
                     <span class="separator"> </span><br></br><br></br>

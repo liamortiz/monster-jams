@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'tone';
-import Monster from './Monster';
-import Band from './Band';
-
 const monsterImages = require.context('../images/');
 const TEST_API_BANDS = [
     {
@@ -71,13 +67,19 @@ class MonsterViewer extends React.Component {
         this.setMonsters();
     }
 
+    handleSaveClick = () => {
+        if (this.props.logged_in) {
+            console.log("Yeah");
+        }
+        console.log("clicked");
+    }
+
     render() {
-        console.log(this.state.bands)
         return (
             <div id = "monster-wrapper">
                 <div>
                     <h1><input placeholder = "Sample Band"/></h1>
-                    <Link to="/playlists"><button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button></Link>
+                    <button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button>
                 </div>
                 <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>
                     {this.state.currentMonsters}
