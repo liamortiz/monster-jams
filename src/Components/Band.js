@@ -1,19 +1,39 @@
 import React from 'react';
-import Monster from './Monster';
 import { Link } from 'react-router-dom';
+import { connect } from 'tone';
+import Monster from './Monster';
+import EditBand from './EditBand';
 
 const monsterImages = require.context('../images/');
+const TEST_API_BANDS = [
+    {
+      id: 1,
+      name: "Band A"
+    },
+    {
+      id: 2,
+      name: "Band B"
+    },
+    {
+       id: 3,
+       name: "Band C"
+    } 
+  ]
 
-class MonsterViewer extends React.Component {
+class Band extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {currentMonsters: []}
+        this.state = {
+            currentMonsters: [], 
+            bands: TEST_API_BANDS
+        }
 
         this.currentSet = 0;
         this.monsters = ['beans', 'potato', 'squids', 'bubble']
         this.sounds = [['A1', 'B1', 'C1'], ['A2', 'C2', 'B2']]
     }
+
     componentDidMount() {
         this.setMonsters();
     }
@@ -56,6 +76,8 @@ class MonsterViewer extends React.Component {
     }
 
     render() {
+        console.log(this.state.bands)
+        console.log(this.state.currentMonsters)
         return (
             <div id = "monster-wrapper">
                 <div>
@@ -69,4 +91,4 @@ class MonsterViewer extends React.Component {
         )
     }
 }
-export default MonsterViewer;
+export default Band;

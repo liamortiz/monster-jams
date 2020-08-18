@@ -3,24 +3,11 @@ import Monster from './Monster';
 import { Link } from 'react-router-dom';
 import EditBand from './EditBand'
 
-const API_Bands = [
-  {
-    id: 1,
-    name: "Band A"
-  },
-  {
-    id: 2,
-    name: "Band B"
-  } 
-]
-
 class Playlists extends React.Component {
-  
     constructor(props) {
         super(props);
         this.state = {
-          currentMonsters: [],
-          bands: API_Bands
+          currentMonsters: []
         }
 
         this.currentSet = 0;
