@@ -27,15 +27,24 @@ class Login extends React.Component {
         }).then(resp => 
             resp.json()
             ).then(data => {
-                this.props.setLogin(data)
-                //this.forceUpdate();
+                if (!data.message) {
+                    this.props.setLogin(data)
+                }
+
         })
     }
 
     handleSignUpSubmit = e => {
         e.preventDefault()
-        console.log("User signs up and should be directed back to homepage")
-        // this.props.changeView("home")
+        fetch('http://localhost:8080/users', {
+            method: 'POST',
+            headers: {accepts: 'application/json', 'Content-Type' : 'application/json'},
+            body: JSON.stringify({user: {username: this.state.usernameNew,
+            password: this.state.passwordNew}})
+        }).then(resp => resp.json())
+            .then(data => {
+                console.log(data);
+            })
     }
 
     render() { 

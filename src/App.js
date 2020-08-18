@@ -19,6 +19,7 @@ class App extends React.Component {
     this.setState({
       logged_in: !this.state.logged_in
     })
+    //window.location = "/";
   }
 
   render(){
