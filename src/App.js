@@ -7,26 +7,48 @@ import Home from './Containers/Home';
 import Band from './Components/Band';
 import Login from './Components/Login';
 import Footer from './Components/Footer';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
+  state = {
+    logged_in: false
+  }
+
+  setLogin = (data) => {
+    console.log(data);
+    this.setState({
+      logged_in: true
+    })
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.logged_in);
+  }
 
   render(){
-  return (
-    <Router>
-    <React.Fragment>
-      <Switch>
-        <div className="App">
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/playlists" component={Band} />
-        </div>
-      </Switch>
-      <Footer/>
-    </React.Fragment>
-    </Router>
-  );
+    return (
+      <Router>
+      <React.Fragment>
+        <Switch>
+          <div className="App">
+            <Navbar />
+            <Route exact path="/" component={Home} />
+      
+
+            <Route path = '/login' render={(props) => (
+              <Login {...props} setLogin={this.setLogin} />
+            )}
+            />
+
+            <Route exact path="/playlists">
+              {this.state.logged_in ? <Band/> : <Redirect to="/login" />}
+            </Route>
+          </div>
+        </Switch>
+        <Footer/>
+      </React.Fragment>
+      </Router>
+    );
 };
 }
 

@@ -27,7 +27,7 @@ class Login extends React.Component {
         }).then(resp => 
             resp.json()
             ).then(data => {
-            console.log(data);
+                this.props.setLogin(data)
         })
     }
 

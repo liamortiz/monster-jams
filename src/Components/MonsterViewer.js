@@ -75,7 +75,6 @@ class MonsterViewer extends React.Component {
         console.log(this.state.bands)
         return (
             <div id = "monster-wrapper">
-                <Band bands={this.state.bands} editBand={this.handleEditClick} />
                 <div>
                     <h1><input placeholder = "Sample Band"/></h1>
                     <Link to="/playlists"><button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button></Link>
