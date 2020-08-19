@@ -11,6 +11,11 @@ class Login extends React.Component {
         confirmpasswordNew: ""
     }
 
+    componentDidMount() {
+        console.log("Mounted");
+        this.props.setLogin()
+    }
+
     handleChange = e => {
         this.setState(
             {[e.target.name] : e.target.value}
@@ -43,7 +48,9 @@ class Login extends React.Component {
             password: this.state.passwordNew}})
         }).then(resp => resp.json())
             .then(data => {
-                console.log(data);
+                if (!data.error) {
+                    this.props.setLogin(data)
+                }
             })
     }
 

@@ -44,6 +44,12 @@
   margin: 2em auto;
 }
 
+#monster-content img {
+  width: 5rem;
+  height: 5rem;
+  margin: 1em 1em;
+}
+
 #monster-wrapper {
   width: 50rem;
   height: 30rem;

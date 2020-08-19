@@ -9,7 +9,6 @@ class Playlist extends React.Component {
         this.state = {playing: false}
         this.synth = new MembraneSynth().toDestination();
         this.musicNodes = [];
-        this.activeNodes = [];
 
         this.play = this.play.bind(this);
     }
@@ -21,6 +20,7 @@ class Playlist extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.sounds !== this.props.sounds) {
             this.createMusicNodes();
+            this.props.updateNodes(this.musicNodes)
         }
     }
 
@@ -33,7 +33,7 @@ class Playlist extends React.Component {
                 if (!this.musicNodes[i]) {
                     this.musicNodes[i] = [];
                 }
-                this.musicNodes[i].push({active: false, sound: this.props.sounds[i], pos: j})
+                this.musicNodes[i].push({active: false, sound: this.props.sounds[i], col: i, row: j})
             }
         }
         this.forceUpdate();

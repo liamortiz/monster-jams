@@ -1,28 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 const monsterImages = require.context('../images/');
-const TEST_API_BANDS = [
-    {
-      id: 1,
-      name: "Band A"
-    },
-    {
-      id: 2,
-      name: "Band B"
-    },
-    {
-       id: 3,
-       name: "Band C"
-    } 
-  ]
 
 class MonsterViewer extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            currentMonsters: [], 
-            bands: TEST_API_BANDS
+            currentMonsters: [],
+            bandName: ""
         }
 
         this.currentSet = 0;
@@ -39,7 +24,7 @@ class MonsterViewer extends React.Component {
         this.props.changeSounds(this.sounds[this.currentSet]);
         
         this.monsters.slice(this.currentSet * 2, (this.currentSet * 2) + 2)
-            .map((monsterName, index) => {
+            .map((monsterName) => {
                 newMonsters.push(<img src = {monsterImages(`./${monsterName}.svg`)} alt = "" />)
             })
         
@@ -69,16 +54,54 @@ class MonsterViewer extends React.Component {
 
     handleSaveClick = () => {
         if (this.props.logged_in) {
-            console.log("Yeah");
+            const nodes = []
+            for (const nodeArr of this.props.nodes) {
+                for (const node of nodeArr) {
+                    if (node.active) {
+                        nodes.push(node.col)
+                        nodes.push(node.row)
+                    }
+                }
+            }
+            const bandName = this.state.bandName
+            const userId = localStorage.getItem('user')
+            const monsters = this.monsters.slice(this.currentSet * 2, (this.currentSet * 2) + 2)
+            const sounds = this.sounds[this.currentSet]
+
+            fetch('http://localhost:8080/playlists', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    band_name: bandName,
+                    pattern: nodes,
+                    monsters: monsters,
+                    sounds: sounds
+                })
+            }).then(() => {
+                console.log("Success.");
+            })
+
+        } else {
+            window.location = "/login"
         }
-        console.log("clicked");
+        
+    }
+
+    handleBandNameChange = (event) => {
+        this.setState({
+            bandName: event.target.value
+        })
     }
 
     render() {
         return (
             <div id = "monster-wrapper">
                 <div>
-                    <h1><input placeholder = "Sample Band"/></h1>
+                    <h1><input placeholder = "Sample Band" onChange = {this.handleBandNameChange} value = {this.state.bandName}/></h1>
                     <button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button>
                 </div>
                 <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>

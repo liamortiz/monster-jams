@@ -14,12 +14,28 @@ class App extends React.Component {
     logged_in: false
   }
 
-  setLogin = (data) => {
-    console.log(data);
+  componentDidMount() {
     this.setState({
-      logged_in: !this.state.logged_in
+      logged_in: !!localStorage.getItem('token')
     })
-    //window.location = "/";
+  }
+
+  setLogin = (data=false) => {
+    if (data) {
+      this.setState({
+        logged_in: true
+      })
+      localStorage.setItem('user', data.user.id);
+      localStorage.setItem('token', data.jwt);
+    
+      window.location = "/"
+    } else {
+      console.log("Test", this.state.logged_in);
+      this.setState({
+        logged_in: false
+      })
+      localStorage.clear();
+    }
   }
 
   render(){
