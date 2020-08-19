@@ -1,6 +1,5 @@
 import React from 'react';
-import Monster from './Monster';
-import EditBand from './EditBand';
+import Monster from './Monster'
 
 class Band extends React.Component {
   state = {
@@ -9,11 +8,11 @@ class Band extends React.Component {
     name: ""
   };
 
-  monsters = []
+  editing = false;
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    fetch('http://localhost:8080/users/1', {
+    fetch(`http://localhost:8080/users/${localStorage.getItem('user')}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -43,24 +42,25 @@ class Band extends React.Component {
           })
   };
 
-  handleEditClick = (id) => {
-    console.log("ID of Band being edited:", id)
-    let newArr = [...this.state.bands]
-    let bandX = newArr.find(obj => obj.id === id)
-    this.setState({editBand: bandX})
-  };
+  handleEditClick = (id, newName="") => {
+    let editedBand = this.state.bands.find(band => band.id === id);
+    editedBand.band_name = newName;
+    this.setState({bands: [...this.state.bands] })
 
-  handleEditChange = (e) => {
-    console.log("Band Editing in progress.. ")
-    this.setState({[e.target.name]: e.target.value})
-  };
+    fetch(`http://localhost:8080/playlists/${id}`, {
+              method: 'PATCH',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+              },
+              body: JSON.stringify(editedBand)
+      }).then(() => {
+        console.log("Success");
+      })
 
-  handleEditSubmit = (e) => {
-    console.log("HandleEditSubmit")
   };
 
   render() {
-    console.log(this.state.editBand)
     return (
       <div>
       <p></p>
@@ -70,7 +70,7 @@ class Band extends React.Component {
         </div>
         <div className="edit-band">
         <p></p>
-          <EditBand bandX={this.state.editBand} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
+          
         </div>
       </div>
     );

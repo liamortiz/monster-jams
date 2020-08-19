@@ -52,7 +52,7 @@ class App extends React.Component {
                 <Login {...props} setLogin={this.setLogin}/>)}>
               </Route>
               <Route path="/playlists">
-                {this.state.logged_in ? <Band/> : <Redirect to="/login" />}
+                {!!localStorage.getItem('token') ? <Band/> : <Redirect to="/login" />}
               </Route>
             </div>
           </Switch>

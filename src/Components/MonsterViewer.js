@@ -10,8 +10,8 @@ class MonsterViewer extends React.Component {
         }
 
         this.currentSet = 0;
-        this.monsters = ['beans', 'potato', 'squids', 'bubble']
-        this.sounds = [['A1', 'B1', 'C1'], ['A2', 'C2', 'B2']]
+        this.monsters = ['robo1', 'robo2', 'beans', 'potato', 'squids', 'bubble']
+        this.sounds = [['D6', 'C5', 'E3'],['A1', 'B1', 'C1'], ['F3', 'G3', 'E3']]
     }
 
     componentDidMount() {
@@ -81,7 +81,7 @@ class MonsterViewer extends React.Component {
                     sounds: sounds
                 })
             }).then(() => {
-                console.log("Success.");
+                window.location = "/playlists"
             })
 
         } else {
