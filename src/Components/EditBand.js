@@ -1,7 +1,6 @@
 import React from 'react';
 
 class EditBand extends React.Component {
-
     render() { 
         console.log(this.props.bandX)
         return (  

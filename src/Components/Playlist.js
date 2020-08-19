@@ -2,7 +2,6 @@ import React from 'react';
 import { MembraneSynth } from "tone";
 
 class Playlist extends React.Component {
-
     constructor(props) {
         super(props);
 
@@ -58,7 +57,6 @@ class Playlist extends React.Component {
         if (node.active) {
             this.synth.triggerAttackRelease(node.sound, "50n");
         }
-
         this.forceUpdate();
     }
 
@@ -95,8 +93,8 @@ class Playlist extends React.Component {
                     {this.getMusicNodes()}
                 </div>
             </>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Playlist;

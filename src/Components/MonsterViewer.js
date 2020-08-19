@@ -2,7 +2,6 @@ import React from 'react';
 const monsterImages = require.context('../images/');
 
 class MonsterViewer extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -102,13 +101,14 @@ class MonsterViewer extends React.Component {
             <div id = "monster-wrapper">
                 <div>
                     <h1><input placeholder = "Sample Band" onChange = {this.handleBandNameChange} value = {this.state.bandName}/></h1>
-                    <button className = "save-btn ui orange mini button" onClick={this.handleSaveClick}>Save</button>
+                    <button className = "save-btn ui orange button" onClick={this.handleSaveClick}>Save</button>
                 </div>
                 <button className = "circular ui positive icon basic button" name = "left" onClick = {this.handleClick}><i class="left arrow icon"></i></button>
                     {this.state.currentMonsters}
                 <button className = "circular ui positive icon basic button" name = "right" onClick = {this.handleClick}><i class="right arrow icon"></i></button>
             </div>
-        )
-    }
-}
+        );
+    };
+};
+
 export default MonsterViewer;
