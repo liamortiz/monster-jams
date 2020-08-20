@@ -61,25 +61,27 @@ class Playlist extends React.Component {
     }
 
     async play() {
-        this.setState({playing: true})
-        for (let i = 0; i < 12; i++) {
-            const n1 = this.musicNodes[0][i];
-            const n2 = this.musicNodes[1][i];
-            const n3 = this.musicNodes[2][i];
+        try {
+            this.setState({playing: true})
+            for (let i = 0; i < 12; i++) {
+                const n1 = this.musicNodes[0][i];
+                const n2 = this.musicNodes[1][i];
+                const n3 = this.musicNodes[2][i];
 
-            if (n1.active) {
-                this.synth.triggerAttackRelease(n1.sound, "80n");
-            }
-            if (n2.active) {
-                this.synth.triggerAttackRelease(n2.sound, "80n");
-            }
-            if (n3.active) {
-                this.synth.triggerAttackRelease(n3.sound, "80n");
-            }
+                if (n1.active) {
+                    this.synth.triggerAttackRelease(n1.sound, "80n");
+                } else if (n2.active) {
+                    this.synth.triggerAttackRelease(n2.sound, "80n");
+                } else if (n3.active) {
+                    this.synth.triggerAttackRelease(n3.sound, "80n");
+                }
 
-            await this.sleep(300)
+                await this.sleep(300)
+            }
+        } catch {
+            console.log("Crashed.");
         }
-    this.setState({playing: false})
+        this.setState({playing: false})
     }
 
     render() {
